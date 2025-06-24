@@ -1,0 +1,413 @@
+{
+	"info": {
+		"_postman_id": "b2c4e229-4209-4c9f-9d2e-37b6281a0dfc",
+		"name": "AutomationExercise Apis test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37325604"
+	},
+	"item": [
+		{
+			"name": "Get all products",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Should return 200 OK\", () => ",
+							"   pm.response.to.have.status(200)",
+							");",
+							"const res = pm.response.json();",
+							"pm.test(\"Should include a list of products\", () => ",
+							"   pm.expect(res.products).to.be.an('array')",
+							");"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://automationexercise.com/api/productsList",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"productsList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all brands",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Should return 200 OK\", () => ",
+							"   pm.response.to.have.status(200)",
+							");",
+							"const res = pm.response.json();",
+							"pm.test(\"Should include a list of brands\", () =>",
+							"   pm.expect(res.brands).to.be.an('array')",
+							");"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://automationexercise.com/api/brandsList",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"brandsList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search for product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Should return 200 OK\", () => ",
+							"   pm.response.to.have.status(200)",
+							");",
+							"const res = pm.response.json();",
+							"pm.test(\"Should return products\", () => ",
+							"   pm.expect(res.products).to.be.an('array').that.is.not.empty",
+							");"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "search_product",
+							"value": "jeans",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://automationexercise.com/api/searchProduct",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"searchProduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new account",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Should return 200 or 201\", () => ",
+							"   pm.response.to.have.status(200) || pm.response.to.have.status(201)",
+							");",
+							"pm.test(\"Should confirm user creation\", () => ",
+							"   pm.expect(pm.response.text().includes('User created')).to.be.true",
+							");"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Test",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "Apple_is_sweet@example.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "Mr",
+							"type": "text"
+						},
+						{
+							"key": "birth_date",
+							"value": "01",
+							"type": "text"
+						},
+						{
+							"key": "birth_month",
+							"value": "01",
+							"type": "text"
+						},
+						{
+							"key": "birth_year",
+							"value": "2006",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "Random",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "Lastname",
+							"type": "text"
+						},
+						{
+							"key": "company",
+							"value": "no",
+							"type": "text"
+						},
+						{
+							"key": "address1",
+							"value": "none",
+							"type": "text"
+						},
+						{
+							"key": "address2",
+							"value": "none",
+							"type": "text"
+						},
+						{
+							"key": "country",
+							"value": "India",
+							"type": "text"
+						},
+						{
+							"key": "zipcode",
+							"value": "121001",
+							"type": "text"
+						},
+						{
+							"key": "state",
+							"value": "Haryana",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "Faridabad",
+							"type": "text"
+						},
+						{
+							"key": "mobile_number",
+							"value": "9876543210",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://automationexercise.com/api/createAccount",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"createAccount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete account",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Should return 200 OK\", () => ",
+							"    pm.response.to.have.status(200)",
+							");",
+							"pm.test(\"Should confirm account deletion\", () =>",
+							"   pm.expect(pm.response.text().includes('Account deleted')).to.be.true",
+							");"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "Apple_is_sweet@example.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://automationexercise.com/api/deleteAccount",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"deleteAccount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update user info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Should return 200 OK\", () => ",
+							"   pm.response.to.have.status(200)",
+							");",
+							"pm.test(\"Should confirm update\", () => ",
+							"   pm.expect(pm.response.text().includes('User updated')).to.be.true",
+							");"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Deepanshu",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "Apple_is_sweet@example.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://automationexercise.com/api/updateAccount",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"updateAccount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user details by email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Should return 200 OK\", () => ",
+							"    pm.response.to.have.status(200)",
+							");",
+							"pm.test(\"Should include user details\", () => ",
+							"    pm.expect(pm.response.json().user).to.be.an('object')",
+							");"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://automationexercise.com/api/getUserDetailByEmail?email=Apple_is_sweet@example.com",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"getUserDetailByEmail"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "Apple_is_sweet@example.com"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
